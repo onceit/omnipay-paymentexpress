@@ -96,6 +96,22 @@ class PxPayGateway extends AbstractGateway
         return $this->completeAuthorize($parameters);
     }
 
+    public function cvcCapture(array $parameters = array())
+    {
+        if (!empty($parameters['cardReference']) && $this->getPxPostPassword() && $this->getPxPostUsername()) {
+            $gateway = Omnipay::create('PaymentExpress_RestApi', $this->httpClient, $this->httpRequest);
+            $gateway->setPassword($this->getPxPostPassword());
+            $gateway->setUserName($this->getPxPostUsername());
+            return $gateway->cvcCapture($parameters);
+        }
+        return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCVCCaptureRequest', $parameters);
+    }
+
+    public function completeCVCCapture(array $parameters = array())
+    {
+        return $this->completeAuthorize($parameters);
+    }
+
     public function createCard(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCreateCardRequest', $parameters);
