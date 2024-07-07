@@ -6,6 +6,7 @@ use Omnipay\Common\AbstractGateway;
 use Omnipay\PaymentExpress\Message\PxPayAuthorizeRequest;
 use Omnipay\PaymentExpress\Message\PxPayCompleteAuthorizeRequest;
 use Omnipay\PaymentExpress\Message\PxPayPurchaseRequest;
+use Omnipay\PaymentExpress\Message\PxPayCaptureRequest;
 use Omnipay\Omnipay;
 
 /**
@@ -106,13 +107,13 @@ class PxPayGateway extends AbstractGateway
         return $this->completeAuthorize($parameters);
     }
 
-    // public function capture(array $parameters = array())
-    // {
-    //     return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCaptureRequest', $parameters);
-    // }
+    public function capture(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCaptureRequest', $parameters);
+    }
 
-    // public function completeCapture(array $parameters = array())
-    // {
-    //     return $this->completeAuthorize($parameters);
-    // }
+    public function completeCapture(array $parameters = array())
+    {
+        return $this->completeAuthorize($parameters);
+    }
 }
