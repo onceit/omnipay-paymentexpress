@@ -16,7 +16,7 @@ class PxPayGateway extends AbstractGateway
 {
     public function getName()
     {
-        return 'PaymentExpress PxPay';
+        return 'PaymentExpress PxPay1';
     }
 
     public function getDefaultParameters()
@@ -107,10 +107,10 @@ class PxPayGateway extends AbstractGateway
         return $this->completeAuthorize($parameters);
     }
 
-    // public function capture(array $parameters = array())
-    // {
-    //     return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCaptureRequest', $parameters);
-    // }
+    public function capture(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayCaptureRequest', $parameters);
+    }
 
     // public function completeCapture(array $parameters = array())
     // {
