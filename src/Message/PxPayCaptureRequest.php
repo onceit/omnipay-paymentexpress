@@ -38,7 +38,7 @@ class PxPayCaptureRequest extends PxPayAuthorizeRequest
 
         $data = parent::getData();
 
-        $data->RecurringMode = 'credentialonfile';
+        $data->RecurringMode = 'installment';
         $data->BillingId = $this->getBillingId();
         return $data;
     }
