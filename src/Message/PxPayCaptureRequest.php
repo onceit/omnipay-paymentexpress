@@ -27,6 +27,16 @@ class PxPayCaptureRequest extends PxPayAuthorizeRequest
         return $this->setParameter('billingId', $value);
     }
 
+    public function getRecurringMode()
+    {
+        return $this->getParameter('recurringMode');
+    }
+
+    public function setRecurringMode($value)
+    {
+        return $this->setParameter('recurringMode', $value);
+    }
+
     public function getData()
     {
         $this->setAmount($this->getAmount() ? $this->getAmount() : '1.00');
@@ -38,8 +48,10 @@ class PxPayCaptureRequest extends PxPayAuthorizeRequest
 
         $data = parent::getData();
 
-        $data->RecurringMode = 'installment';
+        $data->RecurringMode = $this->getRecurringMode();
+
         $data->BillingId = $this->getBillingId();
+
         return $data;
     }
 }
