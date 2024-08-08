@@ -230,7 +230,6 @@ class PxPayAuthorizeRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        var_dump('XML: ' . $data->asXML());
         $httpResponse = $this->httpClient->post($this->getEndpoint(), null, $data->asXML())->send();
 
         return $this->createResponse($httpResponse->xml());
