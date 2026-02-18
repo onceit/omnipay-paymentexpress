@@ -23,7 +23,6 @@ class PxPostGateway extends AbstractGateway
         return array(
             'username' => '',
             'password' => '',
-            'emailAddress' => '',
             'testMode' => false,
         );
     }
