@@ -97,6 +97,16 @@ class PxPayAuthorizeRequest extends AbstractRequest
         return $this->setParameter('pxPostPassword', $value);
     }
 
+    public function getEmailAddress()
+    {
+        return $this->getParameter('emailAddress');
+    }
+
+    public function setEmailAddress($value)
+    {
+        return $this->setParameter('emailAddress', $value);
+    }
+
     public function getEndpoint()
     {
         return $this->getTestMode() === true ? $this->testEndpoint : $this->liveEndpoint;
