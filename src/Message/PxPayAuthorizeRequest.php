@@ -219,6 +219,10 @@ class PxPayAuthorizeRequest extends AbstractRequest
             $data->DpsBillingId = $this->getCardReference();
         }
 
+        if ($this->getEmailAddress()) {
+            $data->EmailAddress = $this->getEmailAddress();
+        }
+
         return $data;
     }
 

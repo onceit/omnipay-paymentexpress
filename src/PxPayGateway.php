@@ -26,6 +26,7 @@ class PxPayGateway extends AbstractGateway
             'password' => '',
             'pxPostUsername' => '',
             'pxPostPassword' => '',
+            'emailAddress' => '',
             'testMode' => false,
         );
     }
@@ -60,6 +61,16 @@ class PxPayGateway extends AbstractGateway
         return $this->setParameter('pxPostUsername', $value);
     }
 
+
+    public function getEmailAddress()
+    {
+        return $this->getParameter('emailAddress');
+    }
+
+    public function setEmailAddress($value)
+    {
+        return $this->setParameter('emailAddress', $value);
+    }
 
     public function getPxPostPassword()
     {
