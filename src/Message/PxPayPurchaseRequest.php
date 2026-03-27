@@ -33,14 +33,15 @@ class PxPayPurchaseRequest extends PxPayAuthorizeRequest
     {
         $this->setAmount($this->getAmount() ? $this->getAmount() : '1.00');
 
-
         if ($this->getAction()) {
             $this->action = $this->getAction();
         }
 
-
-        $data->RecurringMode = $this->getRecurringMode();
         $data = parent::getData();
+
+        if ($this->getRecurringMode()) {
+            $data->RecurringMode = $this->getRecurringMode();
+        }
 
         return $data;
     }

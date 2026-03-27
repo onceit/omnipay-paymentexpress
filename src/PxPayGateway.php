@@ -94,12 +94,15 @@ class PxPayGateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        if ($parameters['usePxPost'] && !empty($parameters['cardReference']) && $this->getPxPostPassword() && $this->getPxPostUsername()) {
+        $usePxPost = !empty($parameters['usePxPost']);
+
+        if ($usePxPost && !empty($parameters['cardReference']) && $this->getPxPostPassword() && $this->getPxPostUsername()) {
             $gateway = Omnipay::create('PaymentExpress_PxPost', $this->httpClient, $this->httpRequest);
             $gateway->setPassword($this->getPxPostPassword());
             $gateway->setUserName($this->getPxPostUsername());
             return $gateway->purchase($parameters);
         }
+
         return $this->createRequest('\Omnipay\PaymentExpress\Message\PxPayPurchaseRequest', $parameters);
     }
 
